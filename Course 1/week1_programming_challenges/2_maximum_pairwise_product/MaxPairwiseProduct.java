@@ -1,8 +1,9 @@
+import java.math.BigInteger;
 import java.util.*;
 import java.io.*;
 
 public class MaxPairwiseProduct {
-    static int getMaxPairwiseProduct(int[] numbers) {
+    static BigInteger getMaxPairwiseProduct(int[] numbers) {
         int max_product = 0;
         int n = numbers.length;
 
@@ -13,15 +14,15 @@ public class MaxPairwiseProduct {
             }
         }
 
-        return max_product;
+        return BigInteger.valueOf(max_product);
     }
 
-    static long getMaxPairwiseProductFaster(int[] numbers){
+    static BigInteger getMaxPairwiseProductFaster(int[] numbers){
         Arrays.sort(numbers);
         int len = numbers.length;
         if(len == 2)
-            return numbers[0] * numbers[1];
-        return numbers[len-1] * numbers[len-2];
+            return BigInteger.valueOf(numbers[0]).multiply(BigInteger.valueOf(numbers[1]));
+        return BigInteger.valueOf(numbers[len - 2]).multiply(BigInteger.valueOf(numbers[len - 1]));
     }
 
     static void stressTest(){
@@ -37,10 +38,10 @@ public class MaxPairwiseProduct {
                 numbers[i] = rand.nextInt(10000);
             for(long number : numbers)
                 System.out.print(number + " ");
-            long slow = getMaxPairwiseProduct(numbers);
-            long fast = getMaxPairwiseProductFaster(numbers);
+            BigInteger slow = getMaxPairwiseProduct(numbers);
+            BigInteger fast = getMaxPairwiseProductFaster(numbers);
             System.out.println("\n" + slow + " " + fast);
-            if (slow == fast)
+            if (slow.equals(fast))
                 System.out.println("-- PASS --\n");
             else
                 OK = false;
