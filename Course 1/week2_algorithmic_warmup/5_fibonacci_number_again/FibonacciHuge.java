@@ -20,20 +20,30 @@ public class FibonacciHuge {
         return current % m;
     }
 
-    private static long getFibonacciHugeOptimised(long n, long m) {
-        if (n <= 1)
-            return n;
-
-        long  first = 0 ;
-        long  second = 1;
-        long  current = 1;
-
-        for (long i = 1; i < n ; i++) {
-            current = (first + second) % 10;
-            first = second % 10;
-            second = current;
+    private static long pisanoPeriodLength(long m) {
+        long F1 = 0, F2 = 1, F, length = 0;
+        for (int i = 0; i < m * m; i++) {
+            F = (F1 + F2) % m;
+            F1 = F2;
+            F2 = F;
+            if (F1 == 0 && F2 == 1) {
+                length = i + 1;
+                break;
+            }
         }
-        return current % m;
+        return length;
+    }
+
+    private static long getFibonacciHugeOptimised(long n, long m) {
+        long remainder = n % pisanoPeriodLength(m);
+
+        long F1 = 0, F2 = 1, F = remainder;
+        for (int i = 1; i < remainder; i++) {
+            F = (F1 + F2) % m;
+            F1 = F2;
+            F2 = F;
+        }
+        return F % m;
     }
     
     public static void main(String[] args) {
