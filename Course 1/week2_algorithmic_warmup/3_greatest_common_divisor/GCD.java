@@ -14,7 +14,7 @@ public class GCD {
     return current_gcd;
   }
 
-  private static int gcd_euclid(int a, int b){
+  private static long gcd_euclid(long a, long b){
     if(b == 0)
       return a;
     return gcd_euclid(b, a%b);
