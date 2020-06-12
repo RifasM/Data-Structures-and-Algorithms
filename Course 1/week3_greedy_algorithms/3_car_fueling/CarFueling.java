@@ -4,16 +4,18 @@ import java.io.*;
 public class CarFueling {
     static int computeMinRefills(int dist, int tank, int[] stops) {
         int count = 0;
-        if(stops.length <= 0)
+        if(stops.length <= 0 || (stops[stops.length-1] + tank < dist))
             return -1;
         for(int i = 0 ; i<stops.length-1; i++){
-            if(!(stops[i+1] - stops[i] < tank))
+            if(stops[i+1] - stops[i] > tank)
                 return -1;
         }
         int cur = 0;
         int pos = cur + tank;
         while(dist>=0){
-            if(Arrays.binarySearch(stops, pos) > 0) {
+            if(cur > dist)
+                break;
+            else if(Arrays.binarySearch(stops, pos) > 0) {
                 cur = pos;
                 count++;
                 dist -= cur;
