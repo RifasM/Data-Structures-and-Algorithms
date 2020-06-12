@@ -2,8 +2,11 @@ import java.util.Scanner;
 
 public class Change {
     private static int getChange(int m) {
-        //write your code here
-        return m;
+        int ten = m / 10;
+        m = m % 10;
+        int five = m / 5;
+        m = m % 5;
+        return m + five + ten;
     }
 
     public static void main(String[] args) {
