@@ -6,6 +6,10 @@ public class CarFueling {
         int count = 0;
         if(stops.length <= 0)
             return -1;
+        for(int i = 0 ; i<stops.length-1; i++){
+            if(!(stops[i+1] - stops[i] < tank))
+                return -1;
+        }
         int cur = 0;
         int pos = cur + tank;
         while(dist>=0){
@@ -32,7 +36,7 @@ public class CarFueling {
         int dist = scanner.nextInt();
         int tank = scanner.nextInt();
         int n = scanner.nextInt();
-        int stops[] = new int[n];
+        int[] stops = new int[n];
         for (int i = 0; i < n; i++) {
             stops[i] = scanner.nextInt();
         }
