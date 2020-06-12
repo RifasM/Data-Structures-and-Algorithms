@@ -15,7 +15,6 @@ class knapsack{
 }
 
 class knapsackCompare implements Comparator<knapsack>{
-
     @Override
     public int compare(knapsack o1, knapsack o2) {
         return o2.cost.compareTo(o1.cost);
