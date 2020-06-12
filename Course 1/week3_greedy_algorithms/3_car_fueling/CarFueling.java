@@ -27,6 +27,7 @@ public class CarFueling {
                         break;
                     }
             }
+            pos = cur + tank;
         }
         return count;
     }
