@@ -3,7 +3,28 @@ import java.io.*;
 
 public class CarFueling {
     static int computeMinRefills(int dist, int tank, int[] stops) {
-        return -1;
+        int count = 0;
+        if(stops.length <= 0)
+            return -1;
+        int cur = 0;
+        int pos = cur + tank;
+        while(dist>=0){
+            if(Arrays.binarySearch(stops, pos) > 0) {
+                cur = pos;
+                count++;
+                dist -= cur;
+            }
+            else{
+                for(int i = cur+tank-1; i > cur; i--)
+                    if(Arrays.binarySearch(stops, i) > 0){
+                        cur = i;
+                        count++;
+                        dist -= i;
+                        break;
+                    }
+            }
+        }
+        return count;
     }
 
     public static void main(String[] args) {
