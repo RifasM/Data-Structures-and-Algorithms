@@ -25,11 +25,9 @@ public class CoveringSegments {
         int point = segments[0].end;
         points.add(point);
 
-        for (Segment s: segments) {
+        for (Segment s: segments)
             if (point < s.start || point > s.end)
                 points.add(point = s.end);
-            System.out.println(point);
-        }
 
         return points;
     }
