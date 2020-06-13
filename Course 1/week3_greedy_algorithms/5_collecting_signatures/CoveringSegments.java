@@ -1,25 +1,39 @@
 import java.util.*;
 
+class Segment {
+    int start, end;
+
+    Segment(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+}
+
+class SegmentComparator implements Comparator<Segment>{
+    @Override
+    public int compare(Segment o1, Segment o2) {
+        return Integer.compare(o1.end, o2.end);
+    }
+}
+
 public class CoveringSegments {
 
-    private static int[] optimalPoints(Segment[] segments) {
-        //write your code here
-        int[] points = new int[2 * segments.length];
-        for (int i = 0; i < segments.length; i++) {
-            points[2 * i] = segments[i].start;
-            points[2 * i + 1] = segments[i].end;
+    private static ArrayList<Integer> optimalPoints(Segment[] segments) {
+        ArrayList<Integer> points = new ArrayList<>();
+        Arrays.sort(segments, new SegmentComparator());
+
+        int point = segments[0].end;
+        points.add(point);
+
+        for (Segment s: segments) {
+            if (point < s.start || point > s.end)
+                points.add(point = s.end);
+            System.out.println(point);
         }
+
         return points;
     }
 
-    private static class Segment {
-        int start, end;
-
-        Segment(int start, int end) {
-            this.start = start;
-            this.end = end;
-        }
-    }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
@@ -30,8 +44,8 @@ public class CoveringSegments {
             end = scanner.nextInt();
             segments[i] = new Segment(start, end);
         }
-        int[] points = optimalPoints(segments);
-        System.out.println(points.length);
+        ArrayList<Integer> points = optimalPoints(segments);
+        System.out.println(points.size());
         for (int point : points) {
             System.out.print(point + " ");
         }
