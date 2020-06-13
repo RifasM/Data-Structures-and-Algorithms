@@ -16,15 +16,13 @@ public class CarFueling {
         ArrayList<Integer> locations = new ArrayList<>();
         for(int i = 0 ; i<stops.length-1 ; i++){
             nextPos = current + tank;
-            if(nextPos > stops[i] && nextPos > stops[i+1] && i!=stops.length-2)
+            if(nextPos > stops[i] && nextPos >= stops[i+1] && i!=stops.length-2)
                 continue;
             if(nextPos >= stops[i]) {
                 locations.add(stops[i]);
                 current += stops[i];
-                System.out.println(current+" "+stops[i]);
             }
         }
-        System.out.println(locations);
         if(locations.get(locations.size()-1) + tank >= dist)
             return locations.size();
         else
