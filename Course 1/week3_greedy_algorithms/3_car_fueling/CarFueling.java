@@ -12,26 +12,19 @@ public class CarFueling {
                 return -1;*/
 
         int current = 0;
-        int nextPos = 0;
-        ArrayList<Integer> locations = new ArrayList<Integer>();
-        for(int stop : stops){
-            if(stop < current + tank)
+        int nextPos;
+        ArrayList<Integer> locations = new ArrayList<>();
+        for(int i = 0 ; i<stops.length-1 ; i++){
+            nextPos = current + tank;
+            if(nextPos > stops[i] && nextPos > stops[i+1] && i!=stops.length-2)
                 continue;
-            else if(current + tank == stop) {
-                locations.add(stop);
-                current = stop;
-            }
-            else{
-                for(int i = stop; i > current; i--)
-                    if(Arrays.binarySearch(stops, i) > 0){
-                        current = i;
-                        count++;
-                        dist -= i;
-                        break;
-                    }
+            if(nextPos >= stops[i]) {
+                locations.add(stops[i]);
+                current += stops[i];
+                System.out.println(current+" "+stops[i]);
             }
         }
-
+        System.out.println(locations);
         if(locations.get(locations.size()-1) + tank >= dist)
             return locations.size();
         else
