@@ -1,12 +1,18 @@
 import java.util.*;
 
+class digit implements Comparator<String>{
+    @Override
+    public int compare(String o1, String o2) {
+        return o1.substring(o1.length()-1).compareTo(o2.substring(o2.length()-1));
+    }
+}
+
 public class LargestNumber {
     private static String largestNumber(String[] a) {
-        //write your code here
+        Arrays.sort(a, new digit());
         String result = "";
-        for (int i = 0; i < a.length; i++) {
+        for (int i = a.length-1; i >= 0; i--)
             result += a[i];
-        }
         return result;
     }
 
