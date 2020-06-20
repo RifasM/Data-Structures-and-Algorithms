@@ -5,8 +5,15 @@ public class BinarySearch {
 
     static int binarySearch(int[] a, int x) {
         int left = 0, right = a.length;
-        //write your code here
-
+        while(left < right){
+            int mid = (left + right)/2;
+            if(a[mid] == x)
+                return mid;
+            else if(a[mid] > x)
+                right = mid - 1;
+            else
+                left = mid + 1;
+        }
         return -1;
     }
 
@@ -31,7 +38,7 @@ public class BinarySearch {
         }
         for (int i = 0; i < m; i++) {
             //replace with the call to binarySearch when implemented
-            System.out.print(linearSearch(a, b[i]) + " ");
+            System.out.print(binarySearch(a, b[i]) + " ");
         }
     }
     static class FastScanner {
