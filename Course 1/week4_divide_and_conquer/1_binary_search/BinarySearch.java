@@ -4,7 +4,7 @@ import java.util.*;
 public class BinarySearch {
 
     static int binarySearch(int[] a, int x) {
-        int left = 0, right = a.length;
+        int left = 0, right = a.length - 1;
         while(left <= right){
             int mid = (left + right)/2;
             if(a[mid] == x)
