@@ -4,6 +4,7 @@ import java.util.*;
 public class BinarySearch {
 
     static int binarySearch(int[] a, int x) {
+        Arrays.sort(a);
         int left = 0, right = a.length;
         while(left < right){
             int mid = (left + right)/2;
@@ -64,7 +65,7 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        stressTest();/*
+        //stressTest();
         FastScanner scanner = new FastScanner(System.in);
         int n = scanner.nextInt();
         int[] a = new int[n];
@@ -79,7 +80,7 @@ public class BinarySearch {
         for (int i = 0; i < m; i++) {
             //replace with the call to binarySearch when implemented
             System.out.print(binarySearch(a, b[i]) + " ");
-        }*/
+        }
     }
     static class FastScanner {
         BufferedReader br;
