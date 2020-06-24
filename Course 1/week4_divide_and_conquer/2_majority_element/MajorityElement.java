@@ -14,13 +14,12 @@ public class MajorityElement {
             if(arr.containsKey(i)) {
                 Integer val = arr.get(i);
                 arr.put(i, ++val);
+                if( val >= a.length/2)
+                    return val;
             }
             else
                 arr.put(i, 1);
         }
-        int val = (int) arr.keySet().toArray()[0];
-        if( val >= a.length/2)
-            return val;
         return -1;
     }
 
