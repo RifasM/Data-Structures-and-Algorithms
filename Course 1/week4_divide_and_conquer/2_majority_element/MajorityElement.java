@@ -14,7 +14,7 @@ public class MajorityElement {
             if(arr.containsKey(i)) {
                 Integer val = arr.get(i);
                 arr.put(i, ++val);
-                if( val >= a.length/2)
+                if( val > a.length/2)
                     return val;
             }
             else
