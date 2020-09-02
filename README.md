@@ -2,4 +2,4 @@
 This repository contains the codes I use, revise and train myself. 🤯
 
 - Contains one folder with Algorithmic Toolbox by Coursera
-- Other folder contains codes picked from random sites
+- Practice folder contains codes picked from sites such as HackerRank, GeeksforGeeks, etc
